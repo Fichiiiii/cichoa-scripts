@@ -7,11 +7,7 @@ world.beforeEvents.chatSend.subscribe(eventData => {
 
     const commands = ['broadcast', 'bc', 'home', 'immortalize', 'lore', 'map', 'name', 'nick', 'run', 'spawn', 'tpa', 'waypoint', 'wp']
 
-    commands.forEach(command => {
-        if (message.startsWith(`.${command}`) || (player.name.startsWith('Fincha') && message.startsWith('.'))) {
-            return
-        }
-    })
+    if (message.startsWith('.')) return
 
     eventData.cancel = true
 
