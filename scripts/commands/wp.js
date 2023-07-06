@@ -1,4 +1,4 @@
-import { world, Vector3 } from '@minecraft/server'
+import { world, Vector } from '@minecraft/server'
 
 world.beforeEvents.chatSend.subscribe(eventData => {
 
