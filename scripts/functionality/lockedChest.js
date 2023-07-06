@@ -18,7 +18,7 @@ world.afterEvents.entityHit.subscribe(eventData => {
 
             if (r.isCanceled) return
 
-            if (r.formValues[0] === "isa kinda cute") {
+            if (r.formValues[0] === "password") {
                 player.sendMessage('Woah you actually got it\nSend me a screenshot of this message to get something\n\nLove ya :3')
             }
             else {
