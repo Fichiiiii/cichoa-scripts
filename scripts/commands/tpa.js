@@ -51,21 +51,21 @@ world.beforeEvents.chatSend.subscribe(eventData => {
             return
         }
 
-        const scoreboardName = `${user.name}:${player.name}`
+        const scoreboardName = `${player.name}:${user.name}`
 
         switch (action) {
             case 'request':
             case 'r':
-                player.sendMessage(`${player.name} has requested to teleport to you.\nType '.tpa accept ${player.name}' to accept or '.tpa deny ${player.name}' to deny.\n§cThis request will expire in 60 seconds.`)
-                user.sendMessage(`Your request was sent to ${parameter[2]}.\n§cThis request will expire in 60 seconds.`)
+                player.sendMessage(`Your request was sent to ${user.name}.\n§cThis request will expire in 60 seconds.`)
+                user.sendMessage(`${player.name} has requested to teleport to you.\nType '.tpa accept ${player.name}' to accept or '.tpa deny ${player.name}' to deny.\n§cThis request will expire in 60 seconds.`)
                 tpaScoreboard(player, user)
-                break
+                return
 
             case 'accept':
             case 'a':
                 if (world.scoreboard.getObjective(scoreboardName)) {
-                    player.sendMessage(`You accepted the request of ${user.name}.\n§cThey will be teleported in 3 seconds.`)
-                    user.sendMessage(`Your request was accepted by ${player.name}.\n§cYou will be teleported in 3 seconds.`)
+                    player.sendMessage(`Your request was  accepted by ${user.name}.\n§cThey will be teleported in 3 seconds.`)
+                    user.sendMessage(`You accepted the request of ${player.name}.\n§cYou will be teleported in 3 seconds.`)
 
                     system.runTimeout(() => {
                         player.runCommandAsync(`tp "${user.name}" "${player.name}"`)
@@ -76,10 +76,11 @@ world.beforeEvents.chatSend.subscribe(eventData => {
             case 'deny':
             case 'd':
                 if (world.scoreboard.getObjective(scoreboardName)) {
-                    player.sendMessage(`§cYou denied the request of ${user.name}.`)
-                    user.sendMessage(`§cYour request was denied by ${player.name}.`)
+                    player.sendMessage(`§cYour request was denied by ${user.name}.`)
+                    user.sendMessage(`§cYou denied the request of ${player.name}.`)
                 }
                 break
+                
             default:
                 player.sendMessage("§cInvalid argument <action>: argument has to be request, r, accept, a, deny or d")
         }
