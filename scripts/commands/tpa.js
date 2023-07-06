@@ -58,7 +58,7 @@ world.beforeEvents.chatSend.subscribe(eventData => {
             case 'r':
                 player.sendMessage(`Your request was sent to ${user.name}.\n§cThis request will expire in 60 seconds.`)
                 user.sendMessage(`${player.name} has requested to teleport to you.\nType '.tpa accept ${player.name}' to accept or '.tpa deny ${player.name}' to deny.\n§cThis request will expire in 60 seconds.`)
-                tpaScoreboard(player, user)
+                tpaScoreboard(user, player)
                 return
 
             case 'accept':
