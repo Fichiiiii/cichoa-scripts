@@ -1,4 +1,4 @@
-import { world, Vector } from '@minecraft/server'
+import { system, world, Vector } from '@minecraft/server'
 
 world.beforeEvents.chatSend.subscribe(eventData => {
 
@@ -57,16 +57,23 @@ world.beforeEvents.chatSend.subscribe(eventData => {
             case 'list':
             case 'l':
                 player.sendMessage(`Your available Waypoints:\n${waypointData}`)
+
                 break
 
             case 'teleport':
             case 'tp':
-                if (!availableWaypoints.includes(name)) {
+                const waypoint = availableWaypoints.find(waypoint => waypoint.displayName.split('|')[0] == name)
+                if (!waypoint) {
                     player.sendMessage(`§cInvalid argument <waypoint>: Waypoint doesn't exist or you don't have access to it`)
                     return
                 }
-                const waypoint = availableWaypoints.find(waypoint => waypoint.displayName.split('|')[0] == name).displayName.split('|')
-                player.teleport(new Vector3(waypoint[1], waypoint[2], waypoint[3]), { dimension: world.getDimension(waypoint[4]) })
+
+                const waypointArgs = waypoint.displayName.split('|')
+
+                system.run(() => {
+                    player.runCommand(`execute in ${waypointArgs[4].split(':')[1]} run tp @s ${waypointArgs[1]} ${waypointArgs[2]} ${waypointArgs[3]}`)
+                })
+                
                 break
 
             default:
