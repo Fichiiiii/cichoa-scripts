@@ -1,5 +1,4 @@
 // Import Custom Commands
-import "commands/bos.js"
 import "commands/broadcast.js"
 import "commands/home.js"
 import "commands/immortalize.js"
@@ -14,7 +13,6 @@ import "commands/wp.js"
 
 // Import Other Functionalities
 import "functionality/blockRotation.js"
-import "functionality/bos.js"
 import "functionality/breakReinforcedDeepslate.js"
 import "functionality/chatRanks.js"
 import "functionality/deathcounter.js"
