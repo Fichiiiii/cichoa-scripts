@@ -2,13 +2,15 @@ import { world } from '@minecraft/server'
 
 world.afterEvents.itemUse.subscribe(eventData => {
 
-    const player = eventData.player
+    const player = eventData.source
 
-    const lore = eventData.itemStack.getLore()[0]
+    const lore = eventData.itemStack.getLore()
 
-    if (lore == 'Can be traded for an immortal item') {
+    if (lore[0] == 'Can be traded for an immortal item') {
 
-        let item = lore.split(' ')
+        let item = lore[1].split(' ')
+
+        console.warn(item)
 
         if (item[5] == 'Elytra') {
             item = item[5]
