@@ -19,10 +19,10 @@ world.afterEvents.itemUse.subscribe(eventData => {
             item = `${item[5]}_${item[6]}`
         }
 
-        if (item == 'Elytra') {
+        /* if (item == 'Elytra') {
             player.sendMessage('§cA strong force stops you from redeeming this token right now')
             return
-        }
+        } */
 
         player.runCommandAsync(`give @s ${item} 1 0 {"keep_on_death":{}}`)
             
