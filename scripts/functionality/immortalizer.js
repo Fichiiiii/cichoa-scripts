@@ -25,7 +25,7 @@ system.events.scriptEventReceive.subscribe(eventData => {
         for (let i = 0; i < 36; i++) {
             const item = container.getItem(i)
 
-            if (item && item.typeId == 'minecraft:paper' && item.getLore() == 'Use this item to immortalize an item') {
+            if (item && item.typeId == 'minecraft:paper' && item.getLore() == 'Use this token to immortalize an item') {
                 immortalizerSlot = i
                 break
             }
@@ -33,7 +33,7 @@ system.events.scriptEventReceive.subscribe(eventData => {
 
         const immortalizer = container.getItem(immortalizerSlot)
 
-        if (immortalizer.typeId != 'minecraft:paper' && immortalizer.getLore() != 'Use this item to immortalize an item') {
+        if (immortalizer.typeId != 'minecraft:paper' && immortalizer.getLore() != 'Use this token to immortalize an item') {
             player.sendMessage('§cYou don\'t have an immortalizer in your inventory')
             return
         }
