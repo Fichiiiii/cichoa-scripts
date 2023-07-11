@@ -1,7 +1,7 @@
 import { system, world } from '@minecraft/server'
 import { ModalFormData } from '@minecraft/server-ui'
 
-system.events.scriptEventReceive.subscribe(eventData => {
+system.afterEvents.scriptEventReceive.subscribe(eventData => {
 
     const player = world.getAllPlayers().find(player => player.name == eventData.message)
 
