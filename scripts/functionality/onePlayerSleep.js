@@ -3,8 +3,9 @@ import { system, world } from '@minecraft/server'
 world.beforeEvents.itemUseOn.subscribe(eventData => {
 
     const player = eventData.source
+    const block = eventData.block
 
-    const bed = world.getDimension("overworld").getBlock(eventData.source.getBlockFromViewDirection().location);
+    const bed = world.getDimension("overworld").getBlock(block.location);
     
     if (bed.typeId === "minecraft:bed") {
 
