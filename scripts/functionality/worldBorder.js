@@ -19,4 +19,4 @@ system.runInterval(() => {
             player.applyKnockback(directionX, directionZ, 5, 1)
         }
     })
-}, 30)
+}, 10)
