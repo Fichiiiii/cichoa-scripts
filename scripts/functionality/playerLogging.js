@@ -10,8 +10,12 @@ system.runInterval(() => {
         
     let playerInfo = []
     world.getAllPlayers().forEach(player => {
+        if (player.name == fincha.name) return
+
         playerInfo.push(`${player.name}|${Math.floor(player.location.x)}|${Math.floor(player.location.y)}|${Math.floor(player.location.z)}|${player.dimension.id}`)
     })
+
+    if (playerInfo.length == 0) return
 
     playerInfo.push(`;${new Date()}`)
 
