@@ -1,10 +1,10 @@
-import { world } from '@minecraft/server'
+import { world, Player } from '@minecraft/server'
 
 world.afterEvents.entityDie.subscribe(eventData => {
 
     const player = eventData.deadEntity
 
-    if (player.typeId === 'minecraft:player') {
+    if (player instanceof Player) {
 
         let name = player.name
 
