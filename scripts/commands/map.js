@@ -4,6 +4,8 @@ world.beforeEvents.chatSend.subscribe(async (eventData) => {
 
     const player = eventData.sender
 
+    if (!player.hasTag("artist")) return
+
     if (eventData.message.startsWith('.map')) {
 
         eventData.cancel = true
