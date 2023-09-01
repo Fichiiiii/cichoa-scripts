@@ -9,11 +9,11 @@ world.beforeEvents.itemUseOn.subscribe(eventData => {
     
     if (bed.typeId === "minecraft:bed") {
 
-        if (world.getTime() >= 12542 && world.getTime() <= 23459) {
+        if (world.getTimeOfDay() >= 12542 && world.getTimeOfDay() <= 23459) {
 
             system.runTimeout(() => {
 
-                world.setTime(0)
+                world.setTimeOfDay(0)
 
                 world.sendMessage(`${player.nameTag} skipped the night!`)
             }, 20 * 4)
