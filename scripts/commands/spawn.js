@@ -1,4 +1,4 @@
-import { world } from '@minecraft/server'
+import { system, world } from '@minecraft/server'
 
 world.beforeEvents.chatSend.subscribe(async (eventData) => {
 
@@ -8,7 +8,10 @@ world.beforeEvents.chatSend.subscribe(async (eventData) => {
 
         eventData.cancel = true
 
-        player.runCommandAsync(`execute in overworld run tp @s 0 88 0`)
-        
+        const spawn = world.getDefaultSpawnLocation()
+
+        system.run(() => {
+            player.teleport(spawn, { "dimension": world.getDimension("overworld") })
+        })
     }
 })
