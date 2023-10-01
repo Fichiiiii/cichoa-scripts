@@ -6,7 +6,7 @@ function getChunk(x, z) {
 }
 
 system.afterEvents.scriptEventReceive.subscribe(eventData => {
-    if (!eventData.id == 'cs:marker') return
+    if (eventData.id != 'cs:marker') return
 
     const player = world.getAllPlayers().find(player => player.name == eventData.message)
 
